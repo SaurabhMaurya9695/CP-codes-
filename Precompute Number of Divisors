@@ -1,0 +1,7 @@
+vector<int> divisorCount(MAX + 1);
+
+void buildDivisorCount() {
+    for (int i = 1; i <= MAX; i++)
+        for (int j = i; j <= MAX; j += i)
+            divisorCount[j]++;
+}
