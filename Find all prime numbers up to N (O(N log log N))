@@ -1,0 +1,15 @@
+vector<bool> isPrime;
+
+void sieve(int N) {
+    isPrime.assign(N + 1, true);
+
+    isPrime[0] = isPrime[1] = false;
+
+    for (int i = 2; 1LL * i * i <= N; i++) {
+        if (isPrime[i]) {
+            for (int j = i * i; j <= N; j += i) {
+                isPrime[j] = false;
+            }
+        }
+    }
+}
