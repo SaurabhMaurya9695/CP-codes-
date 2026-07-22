@@ -1,0 +1,10 @@
+vector<int> getPrimeFactors(int x) {
+    vector<int> factors;
+
+    while (x > 1) {
+        factors.push_back(spf[x]);
+        x /= spf[x];
+    }
+
+    return factors;
+}
