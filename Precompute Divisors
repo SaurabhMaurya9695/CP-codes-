@@ -1,0 +1,7 @@
+vector<vector<int>> divisors(MAX + 1);
+
+void buildDivisors() {
+    for (int i = 1; i <= MAX; i++)
+        for (int j = i; j <= MAX; j += i)
+            divisors[j].push_back(i);
+}
