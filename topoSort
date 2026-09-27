@@ -1,0 +1,41 @@
+vector<ll> topoSort(int n, vector<vector<int>>& pre) {
+    vector<ll> graph[n + 1];
+    vector<ll> indegree(n + 1, 0);
+    for(auto x : pre){
+        int u = x[0];
+        int v = x[1];
+        graph[v].push_back(u);
+        indegree[u]++;
+    }
+
+    // Khan algo for topo sort
+    queue<ll> q;
+    for(int i = 0; i < n; i++){
+        if(indegree[i] == 0){
+            q.push(i);
+        }
+    }
+
+    // start topo here
+    vector<ll> ans;
+    int cnt = 0;
+    while(!q.empty()){
+        ll front = q.front();
+        q.pop();
+        ans.push_back(front);
+        cnt++;
+        for(auto nbrs : graph[front]){
+            indegree[nbrs]--;
+            if(indegree[nbrs] == 0){
+                q.push(nbrs);
+            }
+        }
+    }
+
+    if(ans.size() == n){
+        return ans;
+    }
+    else{
+        return {-1};
+    }
+}
